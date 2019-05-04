@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinosoft.exam.user.mapper.UserMapper">
+
+  <resultMap type="com.sinosoft.exam.user.model.User" id="userMap">
+    <id column="id" property="id"/>
+    <result column="NAME" property="name" jdbcType="VARCHAR"/>
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+  </resultMap>
+  
+  <sql id="field_all">
+    id, name, password
+  </sql>
+  
+  <select id="getUserByName" parameterType="java.lang.String" resultMap="userMap">
+    select <include refid="field_all"/>
+      from USER where name = #{name,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="createAccount" parameterType="com.sinosoft.exam.user.model.User">
+    <selectKey  keyProperty="id" resultType="java.lang.String" order="BEFORE">
+      select uuid()
+    </selectKey>
+    insert into USER values ( #{id}, #{name}, #{password} )
+  </insert>
+</mapper>

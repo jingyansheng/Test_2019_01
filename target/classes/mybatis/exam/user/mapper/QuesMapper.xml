@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinosoft.exam.ques.mapper.QuesMapper">
+    <resultMap type="com.sinosoft.exam.ques.model.Ques" id="QuesMap">
+        <id column="id" property="id"/>
+        <result column="TITLE" property="title" jdbcType="VARCHAR"/>
+        <result column="AUTHOR" property="author" jdbcType="VARCHAR"/>
+        <result column="DATE" property="date" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="userid" property="userid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="field_all">
+    id, title, author, date, description,userid
+  </sql>
+
+    <select id="getQuesById" parameterType="java.lang.String" resultMap="QuesMap">
+        select <include refid="field_all"/>
+        from question where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="getQuesListByUser" parameterType="java.lang.String" resultMap="QuesMap">
+        select <include refid="field_all"/>
+        from question
+        <if test="name != null and name !='admin'">
+            where userid = #{id,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="saveQues" parameterType="com.sinosoft.exam.ques.model.Ques">
+        <selectKey  keyProperty="id" resultType="java.lang.String" order="BEFORE">
+            select uuid()
+        </selectKey>
+        insert into question values ( #{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR} )
+    </insert>
+    <update id="updateQues" parameterType="com.sinosoft.exam.ques.model.Ques">
+        update question
+        <trim prefix="set" suffixOverrides=",">
+        <if test="title != null and title != ''">title=#{title},</if>
+            <if test="author != null and author != ''">author=#{author},</if>
+            <if test="date != null and date != ''">date=#{date},</if>
+            <if test="description != null and description != ''">description=#{description}</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+</mapper>
