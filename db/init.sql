@@ -21,14 +21,14 @@ CREATE TABLE `question` (
   `description` varchar(4000) DEFAULT NULL,
   `userid` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='问题';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='闂';
 
 --
 -- Dumping data for table `question`
 --
 
 LOCK TABLES `question` WRITE;
-INSERT INTO `question` VALUES ('42b49d84-6e96-11e9-8862-309c2367f1c9','用户1','user1','2019-05-05 01:58:45','<p>11111</p>','33b4d4ab-6e95-11e9-8862-309c2367f1c9'),('4f75fa4c-6e96-11e9-8862-309c2367f1c9','用户2','user2','2019-05-05 01:59:06','<p>22222222</p>','b7ee7fb7-6e95-11e9-8862-309c2367f1c9'),('7d721508-6e92-11e9-8862-309c2367f1c9','测试流程信息','admin','2019-05-05 01:31:46','<p>123123</p>','fec2a6ae-6cdd-11e9-afa9-408d5c509072'),('a54a8622-6e92-11e9-8862-309c2367f1c9','测试流程信息12','admin','2019-05-05 01:32:52','<p>324534534</p>','fec2a6ae-6cdd-11e9-afa9-408d5c509072');
+INSERT INTO `question` VALUES ('42b49d84-6e96-11e9-8862-309c2367f1c9','鐢ㄦ埛1','user1','2019-05-05 01:58:45','<p>11111</p>','33b4d4ab-6e95-11e9-8862-309c2367f1c9'),('4f75fa4c-6e96-11e9-8862-309c2367f1c9','鐢ㄦ埛2','user2','2019-05-05 01:59:06','<p>22222222</p>','b7ee7fb7-6e95-11e9-8862-309c2367f1c9'),('7d721508-6e92-11e9-8862-309c2367f1c9','娴嬭瘯娴佺▼淇℃伅','admin','2019-05-05 01:31:46','<p>123123</p>','fec2a6ae-6cdd-11e9-afa9-408d5c509072'),('a54a8622-6e92-11e9-8862-309c2367f1c9','娴嬭瘯娴佺▼淇℃伅12','admin','2019-05-05 01:32:52','<p>324534534</p>','fec2a6ae-6cdd-11e9-afa9-408d5c509072');
 UNLOCK TABLES;
 
 --
