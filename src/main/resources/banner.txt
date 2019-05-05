@@ -158,3 +158,5 @@
                                    MM::::MM
                                     MM::MM
                                      MMMM
+${application.formatted-version}
+${spring-boot.formatted-version}
