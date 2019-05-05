@@ -24,6 +24,9 @@
         #creQues{
             margin-bottom: 10px;
         }
+        #signout{
+            float: right;
+        }
     </style>
     <script type="text/javascript" src="/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="/bootstrap-4.0.0-beta/js/bootstrap.min.js"></script>
@@ -34,6 +37,9 @@
         function openQues(id) {
             location = "/ques/editQues?id="+id;
         }
+        function signout() {
+            location = "/logout";
+        }
     </script>
 </head>
 <body>
@@ -42,6 +48,7 @@
 
 <div class="listQues">
     <input id="creQues" type="button" class="btn btn-primary" onclick="cre();" value="New"/>
+    <input id="signout" type="button" class="btn btn-primary btn-danger" onclick="signout();" value="Signout"/>
     <table class="table table-hover">
         <thead>
         <tr>

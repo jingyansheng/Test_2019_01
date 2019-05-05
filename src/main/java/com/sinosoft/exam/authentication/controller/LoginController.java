@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sinosoft.exam.authentication.service.LoginService;
 import com.sinosoft.exam.user.model.User;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController{
@@ -26,7 +28,7 @@ public class LoginController{
 	LoginService loginService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, @ModelAttribute User user){
+	public ModelAndView login(HttpServletRequest request, RedirectAttributes redirectAttributes, @ModelAttribute User user){
 		ModelAndView mv = new ModelAndView("index");
 		String userName = user.getName();
 		String password = user.getPassword();
@@ -54,6 +56,19 @@ public class LoginController{
 			return null;
 		}
 		
+	}
+
+	@RequestMapping(value="/logout")
+	public ModelAndView logout(HttpServletRequest request){
+		ModelAndView result = new ModelAndView("login");
+		HttpSession session = request.getSession();//获取当前session
+		if(session!=null){
+			User user = (User)session.getAttribute("user");//从当前session中获取用户信息
+			result.addObject("reason", "您已经退出之前的登录账号");
+			session.invalidate();//关闭session
+		}
+		return result;
+
 	}
 
 }

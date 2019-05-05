@@ -42,11 +42,25 @@
           alert("UserName and password can not be empty.");
         }
       }
+
+      $(function () {
+        var tip = $("#tipInfo").val();
+        if(tip.trim().length>0){
+          $("#tip").show();
+        }
+      })
     </script>
   </head>
   <body>
     <h2 class="title">SinoSoft Feedback center</h2>
     <hr/>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display: none;" id="tip">
+      <input id="tipInfo" value="${reason!}" type="hidden"/>
+      <strong>${reason!}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div class="login-container">
       <form action="/login" method="post" id="loginForm">
         <div class="form-group">
