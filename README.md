@@ -6,3 +6,31 @@
 做完以后，文档直接写在这个文件里，工程clean后打成zip包发送给相关人员。
 
 
+### 实现功能
+
+- 用户登陆、注销、注册；问题反馈的增加、修改、查看
+
+- bootstrap样式导航 当前用户和管理员标签
+
+- 导出excel功能准备用POI 时间问题没写
+
+### 开发环境
+
+- JDK 1.8
+- MySQL 8.0
+
+### 开发使用技术
+
+- SpringBoot框架 	
+
+- 采用freemarker模板引擎 Bootstrap前端框架,TinyMCE
+
+- 数据库操作使用MyBatis
+
+### 项目结构说明
+
+- 资源：templates/
+
+- 源码：com.sinosoft.exam
+
+- 初始化数据sql脚本: db/init.sql

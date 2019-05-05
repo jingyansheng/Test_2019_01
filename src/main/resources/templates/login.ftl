@@ -51,6 +51,16 @@
           $("#tip").show();
         }
       })
+
+      function KeyDown()
+      {
+        if (event.keyCode == 13)
+        {
+          event.returnValue=false;
+          event.cancel = true;
+          loginForm.myModal.click();
+        }
+      }
     </script>
   </head>
   <body>
@@ -64,17 +74,17 @@
       </button>
     </div>
     <div class="login-container">
-      <form action="/login" method="post" id="loginForm">
+      <form action="/login" method="post" id="loginForm" name="loginForm">
         <div class="form-group">
           <label for="name">Username or email address</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your email or user name">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your email or user name" onkeydown=KeyDown();>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" onkeydown=KeyDown();>
         </div>
         <div class="form-group">
-          <input type="button" class="btn btn-primary btn-login"  data-target="#wrongNameOrPWD" id="myModal" value="Sign in" onclick="login(  )">
+          <input type="button" class="btn btn-primary btn-login"  data-target="#wrongNameOrPWD" id="myModal" name="myModal" value="Sign in" onclick="login(  )">
         </div>
         <div class="form-group">
           <a href="/register">Sign up</a>
