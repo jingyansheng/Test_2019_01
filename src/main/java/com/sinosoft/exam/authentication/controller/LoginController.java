@@ -32,14 +32,13 @@ public class LoginController{
 		ModelAndView mv = new ModelAndView("index");
 		String userName = user.getName();
 		String password = user.getPassword();
-		//TODO: need to verify here that the username and password are not empty
 		logger.debug("login actin, user: " + userName);
 		User result = loginService.loginValidate(userName, password);
 		if(null == result) {
 			mv.setViewName("login");
-			mv.addObject("reason", "用户名或密码错误");
+			mv.addObject("reason", "wrong user name or password");
 		} else {
-			mv.addObject("reason", "登陆成功");
+			mv.addObject("reason", "login successful");
 			request.getSession().setAttribute("user", result);
 			mv.setViewName("redirect:/ques/quesList");
 		}
@@ -64,7 +63,7 @@ public class LoginController{
 		HttpSession session = request.getSession();//获取当前session
 		if(session!=null){
 			User user = (User)session.getAttribute("user");//从当前session中获取用户信息
-			result.addObject("reason", "您已经退出之前的登录账号");
+			result.addObject("reason", "You have logged out of your previous login account");
 			session.invalidate();//关闭session
 		}
 		return result;

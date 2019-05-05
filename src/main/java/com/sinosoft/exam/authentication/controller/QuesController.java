@@ -65,6 +65,7 @@ public class QuesController {
         List<Ques> quesList = new ArrayList<Ques>();
         quesList = quesService.getQuesListByUser(user);
         mv.addObject("quesList", quesList);
+        mv.addObject("user", user);
         return mv;
     }
 }

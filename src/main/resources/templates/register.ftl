@@ -2,6 +2,7 @@
 <html lang="zh_CN">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>注册 - 中科软测试工程</title>
     <link rel="stylesheet" href="/bootstrap-4.0.0-beta/css/bootstrap.min.css" />
     <style type="text/css">
